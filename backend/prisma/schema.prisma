@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../prisma/generated"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Group {
+  id         Int      @id @default(autoincrement())
+  group_name String
+  arrival    DateTime
+  departure  DateTime
+
+  persons Person[]
+}
+
+model Person {
+  id              Int     @id @default(autoincrement())
+  group_id        Int
+  name            String
+  age             Int?
+  gender          Gender?
+  national_id_num String?
+  mail            String?
+  phone           String?
+  allergies       String?
+
+  group Group @relation(fields: [group_id], references: [id], onDelete: Cascade)
+}
+
+enum Gender {
+  male
+  female
+  other
+}

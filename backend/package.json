@@ -4,22 +4,39 @@
   "description": "Backend for Incalink",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-    
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start": "ts-node server.ts",
+    "dev": "nodemon server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@prisma/adapter-mariadb": "^7.1.0",
     "@prisma/client": "^7.1.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "jest": "^30.2.0",
     "nodemon": "^3.1.11"
   },
   "devDependencies": {
-    "prisma": "^7.1.0"
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.1",
+    "@types/supertest": "^6.0.3",
+    "babel-jest": "^30.2.0",
+    "prisma": "^7.1.0",
+    "supertest": "^7.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
